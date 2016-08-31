@@ -22,7 +22,6 @@ app.config['SECRET_KEY'] = 'secret'
 bootstrap = Bootstrap(app)
 
 # initiate database connection
-# This is a dummy comment
 engine = create_engine('sqlite:///C:\\Users\\shebashir\\Desktop\\Datathon\\Data\\job_locations.db')
 Session = sessionmaker(bind=engine)
 session = Session()
