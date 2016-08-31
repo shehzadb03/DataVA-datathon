@@ -317,8 +317,8 @@ def create_locations_list(job_loc):
 
     for job in job_loc:
         #todo: some lats and lngs were loaded as tuples with parenthesis, which broke the float casting
-        locations.append({'location':{'lat':float(job.latitude.replace("('","").replace("',)","")),
-                                      'lng':float(job.longitude.replace("('","").replace("',)",""))},
+        locations.append({'location':{'lat':float(job.latitude.replace("('","").replace("',)","").replace("(u'","")),
+                                      'lng':float(job.longitude.replace("('","").replace("',)","").replace("(u'",""))},
                                       'title':job.destination.replace("'","")})
     return locations
 
