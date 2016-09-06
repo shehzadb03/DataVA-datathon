@@ -9,65 +9,45 @@
   <head>
     <meta charset="UTF-8">
     <style>
-    
-    /*html,
+    html,
     body {
-         height: 100%;
+        font-family: Arial, sans-serif;
+        height: 100%;
         width: 100%;
         margin: 0;
         padding: 0;
+        background-color: grey;
       }
-*/
-   
+
     .container {
-       /* height: 90%;        
+      height: 93%;
+      width: 100%;
         position: relative;
-        padding:0;*/
-        /*width: 100%;*/
       }
-
-
-      input {
+    input {
         font-size: 12px;
-      }     
-
-
+      }
       h1 {
         color: #525454;
         font-size: 22px;
         margin: 0 0 10px 0;
         text-align: center;
       }
-
       #hide-listings,
       #show-listings {
         width: 40%;
       }
-    
-
-      .sideBar
-      {
-        padding:10px;
-        height:90vh;
-      }
-
-      .sideBar h4{
-        text-align: left;
-        text-transform: uppercase;
-      }
-
-      .sideBar hr {
+      hr {
         background: #D0D7D9;
         height: 1px;
+        margin: 10px 0 10px 0;
         border: none;
       }
-
-
       #map {
         bottom:0px;
         height: 100%;
-        left: 275px;
-        position:absolute;
+        left: 300px;
+        position: absolute;
         right: 0px;
       }
 
@@ -96,7 +76,7 @@
   </head>
 
   <body>
-    <div class="container-fluid">
+    <div class="container">
       <div class="options-box">
         <div>
           <input id="show-listings" type="button" value="Show Listings">
@@ -143,7 +123,7 @@
 
 
       </div>
-      <div id="map" style="height:93vh;"></div>
+      <div id="map"></div>
     </div>
 
 
@@ -181,11 +161,11 @@
       var largeInfowindow = new google.maps.InfoWindow();
 
       // Style the markers a bit. This will be our listing marker icon.
-      var defaultIcon = makeMarkerIcon('00A3E0');
+      var defaultIcon = makeMarkerIcon('0091ff');
 
       // Create a "highlighted location" marker color for when the user
       // mouses over the marker.
-      var highlightedIcon = makeMarkerIcon('C4D600');
+      var highlightedIcon = makeMarkerIcon('FFFF24');
 
         // The following group uses the location array to create an array of markers on initialize.
         for (var i = 0; i < locations.length; i++) {
@@ -199,7 +179,7 @@
               position: position,
               title: title,
               animation: google.maps.Animation.DROP,
-              icon: makeMarkerIcon('C4D600'),
+              icon: makeMarkerIcon('FFFF24'),
               id: i
             });
           } else {
@@ -284,7 +264,7 @@
 
               var heading = google.maps.geometry.spherical.computeHeading(
                 nearStreetViewLocation, marker.position);
-                infowindow.setContent('<div>' + marker.title + '</div><div><form action="{{ url_for('nearby_places') }}" method="POST" ><br><div>Distance: {{distance}}</div><div>Time: {{minutes_away}}</div><br><input type="checkbox" name="job_title" value="' + marker.title + '" checked style="display:none;"><input name="search_criteria" type="text" placeholder="Search for surrounding businesses" style="width:100%;"><br><input id="nearbyPlaces" type="submit" value="search nearby places" style="width:100%;"></form></div><br><div id="pano" style="width:100%"></div>');
+                infowindow.setContent('<div>' + marker.title + '</div><div><form action="{{ url_for('nearby_places') }}" method="POST" ><br><div>Distance: {{distance}}</div><div>Time: {{minutes_away}}</div><br><input type="checkbox" name="job_title" value="' + marker.title + '"><input name="search_criteria" type="text" placeholder="Search for surrounding businesses"><br><input id="nearbyPlaces" type="submit" value="search nearby places"></form></div><br><div id="pano"></div>');
                 var panoramaOptions = {
                   position: nearStreetViewLocation,
                   pov: {
